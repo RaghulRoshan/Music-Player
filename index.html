@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Music Player</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/1bd640a622.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="music-player">
+                <nav>
+                    <div class="circle1">
+                        <i class="fa-duotone fa-solid fa-angles-left" style="--fa-primary-color: #000000; --fa-secondary-color: #000000;"></i>
+                    </div>
+                    <div class="circle">
+                        <i class="fa-solid fa-bars" style="color: #000000;"></i>
+                    </div>
+                </nav>
+                    <img src="music/42376_4.jpg" class="song-img">
+                    <h1>Kaathu Mela</h1>
+                    <p>Paal Dabba</p>
+                    <audio  id="song" >
+                        <source src="music/Kaathu Mela(KoshalWorld.Com).mp3" type="audio/mpeg">
+                    </audio>
+                    <input type="range" value="0" id="progress">
+                        <div class="controls">
+                            <div><i class="fa-solid fa-backward"></i></div>
+                            <div onclick="playpause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                            <div><i class="fa-solid fa-forward"></i></div>
+                        </div>
+                 </div>
+        </div>   
+        
+<script>
+let progress = document.getElementById("progress");
+let song = document.getElementById("song");
+let ctrlIcon = document.getElementById("ctrlIcon");
+
+song.onloadedmetadata = function(){
+    progress.max= song.duration;
+    progress.value= song.currentTime;
+}
+function playpause(){
+    if(ctrlIcon.classList.contains("fa-pause")){
+        song.pause();
+        ctrlIcon.classList.remove("fa-pause");
+        ctrlIcon.classList.add("fa-play");
+    }
+    else{
+        song.play();
+        ctrlIcon.classList.add("fa-pause");
+        ctrlIcon.classList.remove("fa-play");
+    }
+}
+
+if(song.play()){
+    setInterval(()=>{
+        progress.value=song.currentTime;
+    },500);
+}
+progress.onchange=function(){
+    song.play();
+    song.currentTime=progress.value;
+    ctrlIcon.classList.add("fa-pause");
+    ctrlIcon.classList.remove("fa-play");
+}
+    </script>
+    </body>
+</html>
