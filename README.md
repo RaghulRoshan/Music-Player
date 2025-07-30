@@ -1,5 +1,4 @@
-##🎵 Music Player Web App
-
+🎵 Music Player Web App 
 A stylish and responsive **Music Player** built with **HTML**, **CSS**, and **JavaScript**. This app allows users to play a song, control playback, and visually see the song progress. It’s a front-end-only project that mimics the functionality of a simple music player.
 
 ---
